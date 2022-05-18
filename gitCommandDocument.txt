@@ -1,0 +1,27 @@
+*******Explains Git commands used today***********
+
+open Git bash is designated work folder
+
+git clone *http link provided by git website*           //copies repository to computer being used locally 
+
+cd *repository name*                                    //open up the repository for the git shell
+
+ls                                                      //lists all files within the repository
+
+git status                                              //shows all created, deleted, and editied files
+
+git add -A                                              //queues up all files mentioned to be committed
+
+git commit -m "commit message"                          //commits already added files to the revision log so they will be pushed if asked
+
+git push -u origin main                                 //pushes all the committed files to the online repository
+
+git pull origin main                                    //downloads all changed from online repository to the local files
+
+
+
+*user authenticated error*                              //If this error appears, manually insert these credentials into the 'config' file within the '.git' file in the repo
+    [user]
+	    name = Josh Weaver                              //name
+	    email = jtw@digitalartbrokers.io                //account email
+
