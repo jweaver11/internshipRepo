@@ -1,0 +1,153 @@
+//REFERENCE SHEET FOR ALL VARIABLE TYPES, FUNCTIONS, AND PACKAGES FOR THE GO LANGUAGE
+
+Variable Types{
+	int - integer
+	string - string
+	float32 - float
+	bool - true/false
+	error - represents error condition, 'nil' == no error
+		//Example: var err error
+	
+	
+}
+
+//Function Format
+func FunctionName(var vartype){
+	function definition
+}
+
+if verb(variables for verb){
+	statements
+} else { 
+	statements
+}
+
+Methods/Interfaces - Variable Defined Functions grouped together so they can be called up through the variable{
+	Example::
+		type introduction interface {
+			sayName()
+			sayAge()
+		}
+		type human struct{
+			name string
+			age int
+		}
+
+		func (person human) sayName(){
+			fmt.Printf("This person's name is %s and their age is %d", person.name, person.age)
+		}
+		In main:: 	person.sayName()
+					person.sayAge()
+}
+
+select{// A more inteligent 'switch' statement from c++
+case parameter
+	statement
+case parameter
+	statement
+}
+
+
+PACKAGES(
+	context - A context carries deadlines, cancellation signals, and other request-scoped values across API boundaries and between processes.
+	errors - 
+	flag - uses command-line flags as a bool, int, or string
+	fmt - Input output statements to the console. Also includes scanning in variables
+	io - Reads and writes basic interfaces to files or console
+	log - 
+	net/http - client and server implementations
+	os - platformt-independent interface to operating system functionality
+	reflect - 
+	sync -
+	time - imports time functions
+)
+
+General GoLang Statements(
+	defer funcName() - Delay the execution of a function/statment until nearby function returns
+	var := slice(ctx Context)	//sets slice as equal to length
+	var := make(type, length, capacity)	//used to make dynamically sized arrays
+)
+
+CONTEXT Statements{
+	ctx1, cancel1 := context.WithCancel(context.Background())
+	//WithCancel returns a copy of parent with a new Done channel. Closes the context's Done channel when
+
+	d := time.Now().Add(shortDuration)	//Sets 'd' as variable defined by current time plus short duration (not defined here)
+	ctx2, cancel2 := context.WithDeadline(context.Background(), d)
+	//WithDeadline returns a copy of the parent context with the deadline adjusted to be no later than 'd'.
+
+	ctx3, cancel3 := context.WithTimeout(context.Background(), shortDuration)
+	//WithTimeout returns WithDeadline(parent, time.Now().Add(timeout)).
+
+	Use:: defer cancel1() //delays until above functions return so context isn't too soon
+}
+
+FLAG Statements(
+	flagPtrVariable := flag.dataType("name", value, "description")
+		Examples::  numbPtr := flag.Int("numb", 42, "an int as a flag")
+					wordPtr := flag.String("word", "dank", "a string as a flag")
+					boolArgPtr := flag.Bool("arg1", false, "This is a bool argument")
+		Using existing variables:
+					flag.datatype'Var'(&var, "name", value, "desciprtion")
+					Example:: flag.StringVar(&str, "str", "dank", "a string variable")
+	
+	flag.Parse()	//Analyzes command line these defined flags
+		//Must be called after all flags are defined but before they are used
+
+	To use a flag variable:: fmt.Println("message", *boolArgPtr)
+		//must use pointer to variable
+)
+
+FMT Statements(
+	fmt.Printf("prints words in quotes %s", var)	//'%s' is a string variable names var
+	fmt.Scanln(&var)	//scans variable in until enter is pressed
+	fmt.Print()	//^^
+	fmt.Println("prints words in quotes ", var)	//adds '\n' after printed quotes/variables
+	fmt.Sprintln(var, "words", var2) //auto adds spaces between and '\n' at end
+)
+
+IO Statements(
+	
+)
+
+LOG Statements(
+	if err != nil { //prints a panic message and crashes the function is there is an error reading the file
+		log.Panicf("failed reading data from file: %s", err)	// 'Panicf' crashes the function and prints that message to console
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
+)
+
+NET/HTTP Statements(
+	see HTTPFunctionProgram.go
+)
+
+OS Statements(
+	variable, returnError := os.Create("filename.txt")	//creates file with name
+		Example: file, err := os.Create("testFile.txt")
+		//Called as data type '*os.File'
+
+	len, err := file.WriteString("string written into file")	// 'len' = length of characters in file
+		// 'err' is error variable to be returned as nil if there is an error
+
+	data, err := os.ReadFile("filename.txt")	//reads into file
+		if err != nil {	//exception handling if file cannot be read
+			log.Fatal(err)
+		}	
+
+	file, err := os.Open("filename.txt")	//opens and reads file
+	file.Close()	//closes file
+
+	_, err := os.Stat("filename.txt")	// '_' = empty variable not to be used
+		//Stat returns 'FileInfo' describing named file, checks if it exists
+	
+	if errors.Is(err, os.ErrNotExist){
+		//print message that file does not exist
+	}
+
+	os.Setenv("varName", "value")	//Creates a variable with a value using os
+	fmt.Printf("Im printing variable %s, with the value %s", os.Getenv("varName"), os.Getenv("value"))
+		// gets the variable and value from 'Setenv'
+
+)
