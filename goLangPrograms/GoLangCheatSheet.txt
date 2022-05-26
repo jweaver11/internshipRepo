@@ -58,6 +58,7 @@ PACKAGES(
 	net/http - client and server implementations
 	os - platformt-independent interface to operating system functionality
 	reflect - 
+	string - manipulate characters and strings using any other packages
 	sync -
 	time - imports time functions
 )
@@ -150,4 +151,8 @@ OS Statements(
 	fmt.Printf("Im printing variable %s, with the value %s", os.Getenv("varName"), os.Getenv("value"))
 		// gets the variable and value from 'Setenv'
 
+)
+
+STRING Statements(
+	see StringsGoReference.go
 )
