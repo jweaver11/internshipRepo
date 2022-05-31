@@ -55,6 +55,7 @@ PACKAGES(
 	fmt - Input output statements to the console. Also includes scanning in variables
 	io - Reads and writes basic interfaces to files or console
 	log - 
+	math - provides basic constants and mathematical functions
 	net/http - client and server implementations
 	os - platformt-independent interface to operating system functionality
 	reflect - 
@@ -118,6 +119,14 @@ LOG Statements(
 	if err != nil {
 		log.Fatal(err)
 	}
+)
+
+MATH Statements(
+	var := math.Ceil(value)		//Returns lowest variable greater than value
+	var := math.Floor(value) 	//Floor returns the highest integer lower than the value
+	var := math.Max(value1, value2) //Returns the higher value (float) of the two given values
+	var := math.Min(value1, value2)  //Returns the lower value (float) of the two given values
+	var := math.Mod(value1, value2)	//Returns the remainder of division of value1 divided by value 2
 )
 
 NET/HTTP Statements(
