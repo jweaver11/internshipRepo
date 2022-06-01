@@ -1,4 +1,5 @@
 //REFERENCE SHEET FOR ALL VARIABLE TYPES, FUNCTIONS, AND PACKAGES FOR THE GO LANGUAGE
+//OTHER REFERENCES: gobyexample.com, pkg.go.dev
 
 Variable Types{
 	int - integer
@@ -60,7 +61,7 @@ PACKAGES(
 	os - platformt-independent interface to operating system functionality
 	reflect - 
 	string - manipulate characters and strings using any other packages
-	sync -
+	sync - provides basic synchronization primitives such as mutual exclusion locks.
 	time - imports time functions
 )
 
@@ -164,4 +165,11 @@ OS Statements(
 
 STRING Statements(
 	see StringsGoReference.go
+)
+
+SYNC Statements(
+	var sync.Waitgroup	//Declares a variable as a waitgroup giving it the functions add, done, and waitgroup
+		var.Add(value)	//Adds to the Waitgroup counter, can be negative. Panics if value is negative, stops when zero
+		var.Done()		//decrements the WaitGroup counter by one
+		var.Wait()		//Waits until Waitgroup counter is zero
 )
