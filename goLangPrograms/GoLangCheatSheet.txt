@@ -8,8 +8,8 @@ Variable Types{
 	bool - true/false
 	error - represents error condition, 'nil' == no error
 		//Example: var err error
-	
-	
+	` - sets a value equivalent to another
+	map - a collection struct of unordered pairs
 }
 
 //Function Format
@@ -55,6 +55,7 @@ PACKAGES(
 	flag - uses command-line flags as a bool, int, or string
 	fmt - Input output statements to the console. Also includes scanning in variables
 	io - Reads and writes basic interfaces to files or console
+	json - encoding and decoding of JSON
 	log - 
 	math - provides basic constants and mathematical functions
 	net/http - client and server implementations
@@ -111,6 +112,17 @@ FMT Statements(
 
 IO Statements(
 	
+)
+
+JSON Statements(
+	//Exported fields must start with capital letters!!!! -- mainly for variabls and structs
+	var, err := json.Marshal(variable/struct)	//Returns the JSON encoding of variable/struct
+	var, err := json.MarshalIndent(variable/struct)	//Returns the JSON encoding of variable/struct but indents the output
+	err := json.Unmarshal(var, &struct)	//Parses the encoded data and stores it in '&struct', must be a pointer or reference
+	var := json.NewDecoder(strings.NewReader(variable/struct))	//sets this variable as a decoder that uses the strings function 'NewReader' to read the variable/struct
+		//see JsonGoReference to see how its used
+	var := json.NewEncoder(os.Stdout)	//Sets 'var' as a new encoder that writes out to 'w'
+		//see JsonGoReference to see how its used.
 )
 
 LOG Statements(
