@@ -28,7 +28,7 @@ Methods/Interfaces - Variable Defined Functions grouped together so they can be 
 		type introduction interface {
 			sayName()
 			sayAge()
-		}
+		}	//'[]any' is equivalent to interface
 		type human struct{
 			name string
 			age int
@@ -59,10 +59,12 @@ PACKAGES(
 	log - 
 	math - provides basic constants and mathematical functions
 	net/http - client and server implementations
+	html/template - implements templates for generating HTML output safe from code injection
 	os - platformt-independent interface to operating system functionality
 	reflect - 
 	string - manipulate characters and strings using any other packages
 	sync - provides basic synchronization primitives such as mutual exclusion locks.
+
 	time - imports time functions
 )
 
@@ -108,6 +110,9 @@ FMT Statements(
 	fmt.Print()	//^^
 	fmt.Println("prints words in quotes ", var)	//adds '\n' after printed quotes/variables
 	fmt.Sprintln(var, "words", var2) //auto adds spaces between and '\n' at end
+)
+HTML/Template Statements(
+	see TemplateHTMLGoReference
 )
 
 IO Statements(
